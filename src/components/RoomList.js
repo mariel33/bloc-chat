@@ -8,12 +8,14 @@ class RoomList extends Component {
 
         this.state = {
             rooms: [],
-            newRoomName: ''
+            newRoomName: '',
         };
 
         this.roomsRef = this.props.firebase.database().ref('rooms');
 
     };
+
+    
 
     componentDidMount() {
         this.roomsRef.on('child_added', snapshot => {
@@ -40,15 +42,20 @@ class RoomList extends Component {
 
     }
 
+    selectRoom(room){
+        const activeRoom = this.props.activeRoom;
+    }
+
 
     render() {
+
         return (
             <section className="room-list">
                 <div className="side-nav">
                     <ul>
                         {this.state.rooms.map((room, index) => {
                             return (
-                                <div key={index}>{room.name}</div>
+                                <div key={index} >{room.name}</div>
                             )
                         })}
                         <form onSubmit={(e) => this.handleSubmit(e)}>
