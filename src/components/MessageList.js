@@ -6,11 +6,16 @@ class MessageList extends Component {
         super(props)
 
         this.state = {
-            messages: []
+            messages:[{
+            username: '',
+            sentAt: '',
+            content: '',
+            roomId: ''}]
+
         };
 
         this.messagesRef = this.props.firebase.database().ref('messages');
-
+        this.state.messages.sentAt = this.props.firebase.database.ServerValue.TIMESTAMP;
     };
 
 
@@ -19,15 +24,26 @@ class MessageList extends Component {
         this.messagesRef.on('child_added', snapshot => {
             const message = snapshot.val();
             message.key = snapshot.key;
-            this.setState({ messages: this.state.message.concat(message) })
+            this.setState({
+                messages: this.state.messages.concat(message),
+            })
         });
 
     }
 
+    
+
     render() {
         const activeRoom = this.props.activeRoom;
+        const messageList = this.state.messages
+        .filter(message => message.roomId === activeRoom)
+        .map(message => {
+            return <li className="current-message"key={message.key}>{message.content}</li>
+        })
+        
         return (
-            <div>
+            <div className="chatroom-messages">
+                <ul>{messageList}</ul>
             </div>
         );
 

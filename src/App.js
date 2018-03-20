@@ -20,19 +20,36 @@ class App extends Component {
     super(props)
 
     this.state = {
-      activeRoom: ""
+      activeRoom: '',
     };
 
+    
+
+  }
+
+  setActiveRoom(room) {
+    this.setState({ activeRoom: room })
+    console.log(room);
   }
   
   render() {
+    const displayMessages = this.state.activeRoom;
+
     return (
       <div className="App">
-        <aside className="current-rooms">
-          <RoomList firebase={firebase} activeRoom={this.state.activeRoom} />
+        <aside className="list-rooms">
+          <RoomList firebase={firebase} activeRoom={this.setActiveRoom.bind(this)} />
         </aside>
         <div>
-          <MessageList firebase={firebase} activeRoom={this.state.activeRoom} />
+          <main className="active-chat-room">
+            <h2>{this.state.activeRoom.name}</h2>
+
+            {displayMessages ?
+
+            (<MessageList firebase={firebase} activeRoom={this.state.activeRoom.key}/>)
+            : (null)
+            }
+          </main>
         </div>
       </div>
     );
