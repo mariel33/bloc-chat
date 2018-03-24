@@ -58,7 +58,7 @@ class App extends Component {
 
             {displayMessages ?
 
-              (<MessageList firebase={firebase} activeRoom={this.state.activeRoom.key} />)
+              (<MessageList firebase={firebase} activeRoom={this.state.activeRoom.key} user={activeUser}/>)
               : (null)
             }
 
