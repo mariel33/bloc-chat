@@ -2,25 +2,7 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
 
 ul {
   list-style-type: none;
@@ -29,22 +11,41 @@ ul {
 aside{
   float: left;
   text-align: center;
+  border-style: solid;
+  padding-top: 50px;
+  padding-bottom: 200px;
+  padding-right: 5px;
+  background-color: lightslategrey;
+  
 }
 
 .current-message{
   padding:10px;
-  text-align: center;
+
 }
 
-
-nav{
-  padding: 20px;
+.room-title{
+  text-transform: uppercase;
 }
+
 
 input[type=text]{
   width: 50%;
 }
 
+.display-room-list{
+  text-align: left;
+  font-weight: bold;
+}
+
+main{
+  background-color:lightgrey;
+}
+
+.MessageList {
+  text-align: left;
+  
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

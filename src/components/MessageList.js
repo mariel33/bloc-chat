@@ -12,7 +12,6 @@ class MessageList extends Component {
             content: '',
             roomId: ''
             
-
         };
 
         this.messagesRef = this.props.firebase.database().ref('messages');
@@ -54,6 +53,8 @@ class MessageList extends Component {
             roomId: this.props.activeRoom,
             content: this.state.content
         });
+
+        this.setState({ content: '' });
     }
     
 
